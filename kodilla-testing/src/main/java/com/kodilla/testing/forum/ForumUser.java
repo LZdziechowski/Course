@@ -16,7 +16,7 @@ public class ForumUser {
         this.realName = realName;
     }
 
-    public void addPost(String name, String postBody) {
+    public void addPost(String author, String postBody) {
         //do nothing
     }
 

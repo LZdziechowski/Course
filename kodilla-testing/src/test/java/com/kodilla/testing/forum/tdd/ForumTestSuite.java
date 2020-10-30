@@ -1,5 +1,6 @@
 package com.kodilla.testing.forum.tdd;
 
+import com.kodilla.testing.forum.ForumComment;
 import com.kodilla.testing.forum.ForumPost;
 import com.kodilla.testing.forum.ForumUser;
 import org.junit.jupiter.api.*;
@@ -58,5 +59,43 @@ public class ForumTestSuite {
         Assertions.assertEquals(1, testForumUser.getCommentQuantity());
     }
 
+    @DisplayName("")
+    @Test
+    void testGetPost() {
+        System.out.println("Test Get Post");
+        //Given
+        final String testName = "testName";
+        final String testRealName = "testRealName";
+        final String testPostBody = "testPostBody";
+        final String testAuthor = "testAuthor";
+        final ForumUser testForumUser = new ForumUser(testName, testRealName);
+        final ForumPost testForumPost = new ForumPost(testPostBody, testAuthor);
+        testForumUser.addPost(testForumPost.getAuthor(), testForumPost.getPostBody());
+        //When
+        final ForumPost retrivedPost;
+        retrivedPost = testForumUser.getPost(0);
+        //Then
+        Assertions.assertEquals(testForumPost, retrivedPost);
+    }
 
+    @DisplayName("")
+    @Test
+    void testGetComment() {
+        System.out.println("Test Get Comment");
+        //Given
+        final String testName = "testName";
+        final String testRealName = "testRealName";
+        final String testPostBody = "testPostBody";
+        final String testAuthor = "testAuthor";
+        final String testCommentBody = "testCommentBody";
+        final ForumUser testForumUser = new ForumUser(testName, testRealName);
+        final ForumPost testForumPost = new ForumPost(testPostBody, testAuthor);
+        final ForumComment testForumComment = new ForumComment(testForumPost, testCommentBody, testAuthor);
+        testForumUser.addComment(testForumPost, testForumComment.getAuthor(), testForumComment.getCommentBody());
+        //When
+        final ForumComment retrivedComment;
+        retrivedComment = testForumUser.getComment(0);
+        //Then
+        Assertions.assertEquals(testForumComment, retrivedComment);
+    }
 }
