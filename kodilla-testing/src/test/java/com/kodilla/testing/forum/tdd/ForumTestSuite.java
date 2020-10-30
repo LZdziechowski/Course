@@ -98,4 +98,40 @@ public class ForumTestSuite {
         //Then
         Assertions.assertEquals(testForumComment, retrivedComment);
     }
+
+    @DisplayName("")
+    @Test
+    void testRemovePostNotExisting() {
+        System.out.println("Test Remove Post Not Existing");
+        //Given
+        final String testName = "testName";
+        final String testRealName = "testRealName";
+        final String testPostBody = "testPostBody";
+        final String testAuthor = "testAuthor";
+        final ForumUser testForumUser = new ForumUser(testName, testRealName);
+        final ForumPost testForumPost = new ForumPost(testPostBody, testAuthor);
+        //When
+        boolean result = testForumUser.removePost(testForumPost);
+        //Then
+        Assertions.assertFalse(result);
+    }
+
+    @DisplayName("")
+    @Test
+    void testRemoveCommentNotExisting() {
+        System.out.println("Test Remove Post Not Existing");
+        //Given
+        final String testName = "testName";
+        final String testRealName = "testRealName";
+        final String testPostBody = "testPostBody";
+        final String testAuthor = "testAuthor";
+        final String testCommentBody = "testCommentBody";
+        final ForumUser testForumUser = new ForumUser(testName, testRealName);
+        final ForumPost testForumPost = new ForumPost(testPostBody, testAuthor);
+        final ForumComment testForumComment = new ForumComment(testForumPost, testCommentBody, testAuthor);
+        //When
+        boolean result = testForumUser.removeComment(testForumComment);
+        //Then
+        Assertions.assertFalse(result);
+    }
 }
