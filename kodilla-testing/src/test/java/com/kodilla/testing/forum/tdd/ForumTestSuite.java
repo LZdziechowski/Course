@@ -5,7 +5,9 @@ import com.kodilla.testing.forum.ForumPost;
 import com.kodilla.testing.forum.ForumUser;
 import org.junit.jupiter.api.*;
 
-@DisplayName("TDD: Forum Test Suite")
+import static org.junit.jupiter.api.Assertions.*;
+
+@DisplayName("TDD: For um Test Suite")
 public class ForumTestSuite {
 
     private static int testCounter = 0;
@@ -42,7 +44,7 @@ public class ForumTestSuite {
             //When
             testForumUser.addPost(testName, testPostBody);
             //Then
-            Assertions.assertEquals(1, testForumUser.getPostQuantity());
+            assertEquals(1, testForumUser.getPostQuantity());
         }
 
         @DisplayName("when add post with addPost() method, getPost() method return the same post")
@@ -60,7 +62,7 @@ public class ForumTestSuite {
             //When
             final ForumPost retrivedPost = testForumUser.getPost(0);
             //Then
-            Assertions.assertEquals(testForumPost, retrivedPost);
+            assertEquals(testForumPost, retrivedPost);
         }
 
         @DisplayName("when use removePost() method and given as a parameter post not exist, used method return false")
@@ -77,10 +79,10 @@ public class ForumTestSuite {
             //When
             final boolean result = testForumUser.removePost(testForumPost);
             //Then
-            Assertions.assertFalse(result);
+            assertFalse(result);
         }
 
-        @DisplayName("when use removePost() method and given as a patrameter post exist, used method return true and post is removed")
+        @DisplayName("when use removePost() method and given as a patrameter existing post, used method return true and post is removed")
         @Test
         void testRemovePost() {
             System.out.println("Test Remove Post");
@@ -95,8 +97,8 @@ public class ForumTestSuite {
             //When
             final boolean result = testForumUser.removePost(testForumPost);
             //Then
-            Assertions.assertTrue(result);
-            Assertions.assertEquals(0, testForumUser.getPostQuantity());
+            assertTrue(result);
+            assertEquals(0, testForumUser.getPostQuantity());
         }
     }
 
@@ -119,7 +121,7 @@ public class ForumTestSuite {
             //When
             testForumUser.addComment(testForumPost, testAuthor, testCommentBody);
             //Then
-            Assertions.assertEquals(1, testForumUser.getCommentQuantity());
+            assertEquals(1, testForumUser.getCommentQuantity());
         }
 
         @DisplayName("when add comment with addComment() method, getComment() methot return the same comment")
@@ -139,7 +141,7 @@ public class ForumTestSuite {
             //When
             final ForumComment retrivedComment = testForumUser.getComment(0);
             //Then
-            Assertions.assertEquals(testForumComment, retrivedComment);
+            assertEquals(testForumComment, retrivedComment);
         }
 
         @DisplayName("when use removeComment() method and given as a parameter comment not exist, used method return false")
@@ -158,10 +160,10 @@ public class ForumTestSuite {
             //When
             final boolean result = testForumUser.removeComment(testForumComment);
             //Then
-            Assertions.assertFalse(result);
+            assertFalse(result);
         }
 
-        @DisplayName("when use removeComment method and given as a parameter comment exist, used method return true and comment is removed")
+        @DisplayName("when use removeComment method and given as a parameter existing comment, used method return true and comment is removed")
         @Test
         void testRemoveComment() {
             System.out.println("Test Remove Comment");
@@ -178,8 +180,8 @@ public class ForumTestSuite {
             //When
             final boolean result = testForumUser.removeComment(testForumComment);
             //Then
-            Assertions.assertTrue(result);
-            Assertions.assertEquals(0, testForumUser.getCommentQuantity());
+            assertTrue(result);
+            assertEquals(0, testForumUser.getCommentQuantity());
         }
     }
 }
