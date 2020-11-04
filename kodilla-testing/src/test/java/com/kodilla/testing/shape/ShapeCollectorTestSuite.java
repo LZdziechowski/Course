@@ -10,7 +10,7 @@ public class ShapeCollectorTestSuite {
 
     @BeforeAll
     public static void beforeAll() {
-        System.out.println("Begining of tests");
+        System.out.println("Beginning of tests");
     }
 
     @AfterAll

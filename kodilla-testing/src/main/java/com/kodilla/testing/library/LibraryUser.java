@@ -1,13 +1,13 @@
-package com.kodilla.testing.liblary;
+package com.kodilla.testing.library;
 
-public class LiblaryUser {
+public class LibraryUser {
 
     private String firstName;
     private String lastName;
     private int peselId;
 
 
-    public LiblaryUser(String firstName, String lastName, int peselId) {
+    public LibraryUser(String firstName, String lastName, int peselId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.peselId = peselId;
@@ -42,7 +42,7 @@ public class LiblaryUser {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        LiblaryUser that = (LiblaryUser) o;
+        LibraryUser that = (LibraryUser) o;
 
         if (peselId != that.peselId) return false;
         if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
