@@ -36,8 +36,9 @@ public class WeatherForecast {
         }
         result = sum / temperatures.getTemperatures().size();
 
-        BigDecimal resultBigDecimal = new BigDecimal(result).setScale(2, RoundingMode.HALF_EVEN);
-        return resultBigDecimal.doubleValue();
+        return result;
+        //BigDecimal resultBigDecimal = new BigDecimal(result).setScale(2, RoundingMode.HALF_EVEN);
+        //return resultBigDecimal.doubleValue();
     }
 
     public double medianTemperature() {
