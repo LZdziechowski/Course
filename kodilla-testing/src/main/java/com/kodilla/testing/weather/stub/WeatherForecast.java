@@ -37,7 +37,7 @@ public class WeatherForecast {
         result = sum / temperatures.getTemperatures().size();
 
         return result;
-        //BigDecimal resultBigDecimal = new BigDecimal(result).setScale(2, RoundingMode.HALF_EVEN);
+        //final BigDecimal resultBigDecimal = new BigDecimal(result).setScale(2, RoundingMode.HALF_EVEN);
         //return resultBigDecimal.doubleValue();
     }
 

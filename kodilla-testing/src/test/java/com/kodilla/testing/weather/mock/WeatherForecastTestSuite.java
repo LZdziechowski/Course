@@ -30,12 +30,6 @@ public class WeatherForecastTestSuite {
     @BeforeAll
     static void beforeAll() {
         System.out.println("Begining of tests.");
-
-        temperaturesMap.put("Rzeszów", 25.5);
-        temperaturesMap.put("Kraków", 26.2);
-        temperaturesMap.put("Wroclaw", 24.8);
-        temperaturesMap.put("Warszawa", 25.2);
-        temperaturesMap.put("Gdansk", 26.1);
     }
 
     @AfterAll
@@ -47,6 +41,13 @@ public class WeatherForecastTestSuite {
     public void beforeEach() {
         testCounter++;
         System.out.println("Prepering to execute test #" + testCounter);
+
+        temperaturesMap.clear();
+        temperaturesMap.put("Rzeszów", 25.5);
+        temperaturesMap.put("Kraków", 26.2);
+        temperaturesMap.put("Wroclaw", 24.8);
+        temperaturesMap.put("Warszawa", 25.2);
+        temperaturesMap.put("Gdansk", 26.1);
     }
 
     @Test
