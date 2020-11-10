@@ -27,7 +27,7 @@ public class BookDirectoryTestSuite {
 
     @AfterAll
     public static void afterAll() {
-        System.out.println("Alle tests are finished");
+        System.out.println("All tests are finished");
     }
 
     @BeforeEach
