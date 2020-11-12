@@ -54,10 +54,9 @@ public class ForumStatisticsTestSuit {
             System.out.println("Test Average Values Of Posts 0 Posts");
             //Given
             final ForumStatistics forumStatistics = new ForumStatistics();
+            when(statisticsMock.postCount()).thenReturn(0);
+            when(statisticsMock.usersNames()).thenReturn(generateListOfUserNames(5));
             forumStatistics.calculateAdvStatistics(statisticsMock);
-            //when(statisticsMock.postCount()).thenReturn(0);
-            //when(statisticsMock.usersNames()).thenReturn(generateListOfUserNames(5));
-            //When
             final double result = forumStatistics.getAverageNumberOfPostsPerUser();
             //Then
             assertEquals(0, result);
@@ -68,11 +67,11 @@ public class ForumStatisticsTestSuit {
             System.out.println("Test Average Values Of Posts 1000 Posts");
             //Given
             final ForumStatistics forumStatistics = new ForumStatistics();
-            forumStatistics.calculateAdvStatistics(statisticsMock);
             final List<String> list = generateListOfUserNames(5);
             when(statisticsMock.postCount()).thenReturn(1000);
             when(statisticsMock.usersNames()).thenReturn(list);
-            //when(statisticsMock.commentsCount()).thenReturn(10);
+            when(statisticsMock.commentsCount()).thenReturn(10);
+            forumStatistics.calculateAdvStatistics(statisticsMock);
             //When
             final double result = forumStatistics.getAverageNumberOfPostsPerUser();
             //Then
@@ -88,9 +87,9 @@ public class ForumStatisticsTestSuit {
             System.out.println("Test Average Values Of Comments 0 Comments");
             //Given
             final ForumStatistics forumStatistics = new ForumStatistics();
-            forumStatistics.calculateAdvStatistics(statisticsMock);
-            //when(statisticsMock.commentsCount()).thenReturn(0);
+            when(statisticsMock.commentsCount()).thenReturn(0);
             when(statisticsMock.usersNames()).thenReturn(generateListOfUserNames(5));
+            forumStatistics.calculateAdvStatistics(statisticsMock);
             //When
             final double result = forumStatistics.getAverageNumberOfCommentsPerUser();
             //Then
@@ -102,10 +101,10 @@ public class ForumStatisticsTestSuit {
             System.out.println("Test Average Values Of Comments Less Comments More Posts");
             //Given
             final ForumStatistics forumStatistics = new ForumStatistics();
-            forumStatistics.calculateAdvStatistics(statisticsMock);
             when(statisticsMock.commentsCount()).thenReturn(5);
             when(statisticsMock.postCount()).thenReturn(10);
             when(statisticsMock.usersNames()).thenReturn(generateListOfUserNames(5));
+            forumStatistics.calculateAdvStatistics(statisticsMock);
             //When
             final double result = forumStatistics.getAverageNumberOfCommentsPerUser();
             //Then
@@ -117,10 +116,10 @@ public class ForumStatisticsTestSuit {
             System.out.println("Test Average Values Of Comments More Comments Less Posts");
             //Given
             final ForumStatistics forumStatistics = new ForumStatistics();
-            forumStatistics.calculateAdvStatistics(statisticsMock);
             when(statisticsMock.commentsCount()).thenReturn(10);
             when(statisticsMock.postCount()).thenReturn(5);
             when(statisticsMock.usersNames()).thenReturn(generateListOfUserNames(5));
+            forumStatistics.calculateAdvStatistics(statisticsMock);
             //When
             final double result = forumStatistics.getAverageNumberOfCommentsPerUser();
             //Then
@@ -137,10 +136,10 @@ public class ForumStatisticsTestSuit {
             System.out.println("Test Average Values Of Posts 0 Users");
             //Given
             final ForumStatistics forumStatistics = new ForumStatistics();
+            when(statisticsMock.postCount()).thenReturn(0);
+            when(statisticsMock.commentsCount()).thenReturn(0);
+            when(statisticsMock.usersNames()).thenReturn(generateListOfUserNames(0));
             forumStatistics.calculateAdvStatistics(statisticsMock);
-            //when(statisticsMock.postCount()).thenReturn(0);
-            //when(statisticsMock.commentsCount()).thenReturn(0);
-            //when(statisticsMock.usersNames()).thenReturn(generateListOfUserNames(0));
             //When
             final double result = forumStatistics.getAverageNumberOfCommentsPerPost();
             //Then
@@ -152,10 +151,10 @@ public class ForumStatisticsTestSuit {
             System.out.println("Test Average Values Of Posts 100 Users");
             //Given
             final ForumStatistics forumStatistics = new ForumStatistics();
-            forumStatistics.calculateAdvStatistics(statisticsMock);
             when(statisticsMock.postCount()).thenReturn(100);
             when(statisticsMock.commentsCount()).thenReturn(1000);
             when(statisticsMock.usersNames()).thenReturn(generateListOfUserNames(5));
+            forumStatistics.calculateAdvStatistics(statisticsMock);
             //When
             final double result = forumStatistics.getAverageNumberOfCommentsPerPost();
             //Then
