@@ -25,7 +25,7 @@ public class ForumStatistics {
 //        if (statistics.postCount() > 0) {
 //            averageNumberOfCommentsPerPost = (double) statistics.commentsCount() / statistics.postCount();
 //        } else {
-//            averageNumberOfCommentsPerPost = 0;
+//            averageNumberOfCommentsPe rPost = 0;
 //        }
 //    }
 
