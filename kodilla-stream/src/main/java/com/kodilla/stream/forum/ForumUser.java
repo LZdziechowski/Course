@@ -31,7 +31,7 @@ public final class ForumUser {
                 .collect(Collectors.toSet());
     }
 
-    public Set<String> getLocationsOfFriendsofFriends() {
+    public Set<String> getLocationsOfFriendsOfFriends() {
         return friends.stream()
                 .flatMap(user -> user.getFriends().stream())
                 .filter(user -> user != this)
