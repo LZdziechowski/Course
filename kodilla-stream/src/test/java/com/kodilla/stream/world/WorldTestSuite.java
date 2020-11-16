@@ -61,7 +61,7 @@ public class WorldTestSuite {
         //When
         final BigDecimal totalPeopleQuantity = world.getPeopleQuantity();
         //Then
-        BigDecimal expectedPeopleQuantity = new BigDecimal("3147591016");
+        final BigDecimal expectedPeopleQuantity = new BigDecimal("3147591016");
         assertEquals(expectedPeopleQuantity, totalPeopleQuantity);
         assertEquals(3, world.getContinentList().size());
         assertEquals(3, europe.getCountryList().size());
