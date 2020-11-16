@@ -28,7 +28,7 @@ public class SimpleInvoiceTestSuit {
     void testGetValueToPay() {
         System.out.println("Test Get Value To Pay");
         //Given
-        SimpleInvoice simpleInvoice = new SimpleInvoice();
+        final SimpleInvoice simpleInvoice = new SimpleInvoice();
         //When
         simpleInvoice.addItem(new SimpleItem(new SimpleProduct("Product 1", 17.28), 2));
         simpleInvoice.addItem(new SimpleItem(new SimpleProduct("Product 2", 11.99), 3.5));

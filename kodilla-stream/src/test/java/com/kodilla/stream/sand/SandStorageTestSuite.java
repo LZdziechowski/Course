@@ -1,5 +1,6 @@
 package com.kodilla.stream.sand;
 
+import com.kodilla.stream.immutable.Book;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,7 +32,7 @@ public class SandStorageTestSuite {
     void testGetSandBeansQuantity() {
         System.out.println("Test get sand beans quantity.");
         //Given
-        List<SandStorage> continents = new ArrayList<>();
+        final List<SandStorage> continents = new ArrayList<>();
         continents.add(new Europe());
         continents.add(new Africa());
         continents.add(new Asia());
@@ -41,8 +42,25 @@ public class SandStorageTestSuite {
             totalSand = totalSand.add(continent.getSandBeansQuantity());
         }
         //Then
-        BigDecimal expectedSand = new BigDecimal("211111110903703703670");
+        final BigDecimal expectedSand = new BigDecimal("211111110903703703670");
         assertEquals(expectedSand, totalSand);
-
     }
+
+    @Test
+    void testGetSandBeansQuantityWithReduce() {
+        System.out.println("Test get sand Beans Quantity With Reduce");
+        //Given
+        final List<SandStorage> continents = new ArrayList<>();
+        continents.add(new Europe());
+        continents.add(new Africa());
+        continents.add(new Asia());
+        //When
+        final BigDecimal totalSand = continents.stream()
+                .map(SandStorage::getSandBeansQuantity)
+                .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
+        //Then
+        final BigDecimal expectedSand = new BigDecimal("211111110903703703670");
+        assertEquals(expectedSand, totalSand);
+    }
+
 }
