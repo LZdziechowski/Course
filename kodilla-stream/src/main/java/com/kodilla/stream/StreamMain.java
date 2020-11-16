@@ -10,6 +10,7 @@ import com.kodilla.stream.lambda.*;
 import com.kodilla.stream.person.People;
 import com.kodilla.stream.referene.FunctionalCalculator;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.SocketHandler;
@@ -107,9 +108,10 @@ public class StreamMain {
         //-------------------- 7.3 -------------------//
 
         Forum forum = new Forum(100);
+        LocalDate currentDate = LocalDate.now();
         Map<Integer, ForumUser> theResultMapOfForumUsers = forum.getForumUserList().stream()
                 .filter(user -> user.getUserSex() == 'M')
-                .filter(user -> user.getDateOfBirth().getYear() < 2000)
+                .filter(user -> user.getDateOfBirth().plusYears(20).isBefore(currentDate))
                 .filter(user -> user.getQuantityOfPosts() >= 1)
                 .collect(Collectors.toMap(ForumUser::getUserId, user -> user));
 
