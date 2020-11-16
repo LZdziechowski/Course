@@ -107,9 +107,9 @@ public class StreamMain {
 
         //-------------------- 7.3 -------------------//
 
-        Forum forum = new Forum(100);
-        LocalDate currentDate = LocalDate.now();
-        Map<Integer, ForumUser> theResultMapOfForumUsers = forum.getForumUserList().stream()
+        final Forum forum = new Forum(100);
+        final LocalDate currentDate = LocalDate.now();
+        final Map<Integer, ForumUser> theResultMapOfForumUsers = forum.getForumUserList().stream()
                 .filter(user -> user.getUserSex() == 'M')
                 .filter(user -> user.getDateOfBirth().plusYears(20).isBefore(currentDate))
                 .filter(user -> user.getQuantityOfPosts() >= 1)
@@ -118,6 +118,5 @@ public class StreamMain {
         System.out.println("Size result map of forum users: " + theResultMapOfForumUsers.size());
         theResultMapOfForumUsers.entrySet().stream()
                 .forEach(System.out::println);
-
     }
 }
