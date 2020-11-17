@@ -38,4 +38,16 @@ public final class ArrayOperationsTestSuit {
         final double expectedAverage = 5.1;
         assertEquals(expectedAverage, calculatedAverage);
     }
+
+    @Test
+    void testGetAverageEmptyTab() {
+        System.out.println("Test get avrage empty tab");
+        //Given
+        final int[] numbersTab = new int[0];
+        //When
+        final double calculatedAverage = ArrayOperations.getAverage(numbersTab);
+        //Then
+        final double expectedAverage = 0;
+        assertEquals(expectedAverage, calculatedAverage);
+    }
 }
