@@ -11,7 +11,7 @@ public interface ArrayOperations {
                 .forEach(n -> System.out.println(numbers[n]));
 
         result = IntStream.range(0, numbers.length)
-                .mapToDouble(number -> (double)number)
+                .map(n -> n = numbers[n])
                 .average()
                 .getAsDouble();
 
