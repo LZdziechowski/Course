@@ -2,8 +2,9 @@ package com.kodilla.exception.test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
-public class Finder {
+public final class Finder {
 
     final private Map<String, Boolean> airports = new HashMap<>();
 
@@ -36,5 +37,20 @@ public class Finder {
         } else {
             System.out.println("You can not fly.");
         }
+    }
+
+    public boolean airportFromToWithChange(Flight flight) {
+        final Map<String, Boolean> map = new HashMap<>(airports);
+        final String arrivalAirport = flight.getArrivalAirport();
+
+        if (map.containsKey(arrivalAirport) && map.get(arrivalAirport) == true) {
+            return true;
+        } else {
+            map.entrySet().stream()
+                    .filter(airport -> airport.getValue() == true)
+                    .forEach();
+
+
+
     }
 }
