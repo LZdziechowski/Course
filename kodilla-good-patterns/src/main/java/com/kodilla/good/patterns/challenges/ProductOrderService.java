@@ -17,7 +17,7 @@ public class ProductOrderService {
         final boolean isOrdered = orderService.order(orderRequest.getUser(), orderRequest.getProduct(), orderRequest.getQuantity());
 
         if(isOrdered) {
-            orderRepository.createOrder(orderRequest.getUser(), orderRequest.getProduct(), orderRequest.getQuantity());
+            orderRepository.createOrder(orderRequest);
             informationService.inform(orderRequest.getUser());
             return new OrderDto(orderRequest.getUser(), true);
         } else {

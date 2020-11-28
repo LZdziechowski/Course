@@ -2,7 +2,7 @@ package com.kodilla.exception.test;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 public final class Finder {
 
@@ -46,9 +46,9 @@ public final class Finder {
         if (map.containsKey(arrivalAirport) && map.get(arrivalAirport) == true) {
             return true;
         } else {
-            map.entrySet().stream()
+            final Map<String, Boolean> mapAirportICanGo = map.entrySet().stream()
                     .filter(airport -> airport.getValue() == true)
-                    .forEach();
+                    .collect(Collectors.toMap());
 
 
 
