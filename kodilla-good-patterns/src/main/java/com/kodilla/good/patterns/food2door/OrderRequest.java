@@ -2,17 +2,19 @@ package com.kodilla.good.patterns.food2door;
 
 public final class OrderRequest {
 
-    private final Supplier supplier;
+    private final User user;
+    private final SupplierInterface supplier;
     private final Product product;
     private  final int quantity;
 
-    public OrderRequest(final Supplier supplier,final Product product, final int quantity) {
+    public OrderRequest(final User user, final SupplierInterface supplier, final Product product, final int quantity) {
+        this.user = user;
         this.supplier = supplier;
         this.product = product;
         this.quantity = quantity;
     }
 
-    public Supplier getUser() {
+    public SupplierInterface getUser() {
         return supplier;
     }
 
