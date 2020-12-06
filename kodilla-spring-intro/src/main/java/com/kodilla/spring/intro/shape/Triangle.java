@@ -1,9 +1,10 @@
 package com.kodilla.spring.intro.shape;
 
-public final class Triangle extends Figure {
+public final class Triangle implements Shape {
 
     @Override
-    public void draw() {
+    public String draw() {
         System.out.println("This is Triangle.");
+        return "This is Triangle";
     }
 }

@@ -39,7 +39,7 @@ public final class Finder {
         }
     }
 
-    public boolean airportFromToWithChange(Flight flight) {
+    /*public boolean airportFromToWithChange(Flight flight) {
         final Map<String, Boolean> map = new HashMap<>(airports);
         final String arrivalAirport = flight.getArrivalAirport();
 
@@ -51,6 +51,8 @@ public final class Finder {
                     .collect(Collectors.toMap());
 
 
-
-    }
+            //return true temporary
+            return true;
+        }
+    }*/
 }
