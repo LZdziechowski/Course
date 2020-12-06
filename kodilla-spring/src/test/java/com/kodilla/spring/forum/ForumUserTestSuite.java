@@ -1,14 +1,16 @@
 package com.kodilla.spring.forum;
 
 import org.junit.jupiter.api.*;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 public class ForumUserTestSuite {
 
-    private int testCounter = 0;
+    private static int testCounter = 0;
 
     @BeforeAll
     public static void beforeAll() {
@@ -23,7 +25,7 @@ public class ForumUserTestSuite {
     @BeforeEach
     public void beforeEach() {
         testCounter++;
-        System.out.println("Prepare to execute test: #" + testCounter);
+        System.out.println("Preparing to execute test: #" + testCounter);
     }
 
     @Test
