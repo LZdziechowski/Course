@@ -22,5 +22,9 @@ public final class TaskList {
         }
         return false;
     }
+
+    public List<String> getTasks() {
+        return tasks;
+    }
 }
 
