@@ -29,7 +29,7 @@ public class Board {
             result += "|";
             for (int n = MIN_INDEX; n <= MAX_INDEX; n++) {
                 if (board[i][n] == null) {
-                    result += "   ";
+                    result += "  ";
                 } else {
                     result += (board[i][n].getColor().equals(Figure.BLACK) ? "b" : "w");
                     result += (board[i][n] instanceof Pawn ? "P" : "Q");

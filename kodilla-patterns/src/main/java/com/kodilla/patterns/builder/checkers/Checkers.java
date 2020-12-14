@@ -6,7 +6,7 @@ public class Checkers {
     private final String playerOne;
     private final String playerTwo;
 
-    public Checkers(Board board, String playerOne, String playerTwo) {
+    private Checkers(Board board, String playerOne, String playerTwo) {
         this.board = board;
         this.playerOne = playerOne;
         this.playerTwo = playerTwo;
@@ -24,7 +24,7 @@ public class Checkers {
         return playerTwo;
     }
 
-    public static class CheckerBuilder() {
+    public static class CheckerBuilder {
 
         private Board board = new Board();
         private String playerOne = "";

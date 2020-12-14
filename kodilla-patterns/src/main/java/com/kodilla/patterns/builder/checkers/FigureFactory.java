@@ -6,7 +6,7 @@ public class FigureFactory {
     public static final String QUEEN = "QUEEN";
 
     public static Figure makeFigure(String figureType, String color) {
-        if (figureType.equals("PAW")) {
+        if (figureType.equals("PAWN")) {
             return new Pawn(color);
         } else if (figureType.equals("QUEEN")) {
             return new Queen(color);
