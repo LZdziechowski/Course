@@ -16,6 +16,8 @@ public class BoardTestSuite {
 
     private static int testCounter = 0;
 
+
+
     @BeforeAll
     public static void beforeAll() {
         System.out.println("Beginning of tests.");

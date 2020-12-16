@@ -23,14 +23,9 @@ public final class Bigmac {
         private Sauce sauce;
         private final List<Ingredient> ingredients = new ArrayList<>();
 
-        public BigmacBuilder bunSesame(boolean bunSesame) {
+        public BigmacBuilder(boolean bunSesame, int numberOfBurgers) {
             this.bunSesame = bunSesame;
-            return this;
-        }
-
-        public BigmacBuilder numberOfBurgers(int numberOfBurgers) {
             this.numberOfBurgers = numberOfBurgers;
-            return this;
         }
 
         public BigmacBuilder sauce(Sauce sauce) {

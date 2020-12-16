@@ -10,9 +10,7 @@ public class BigmacTestSuite {
     void testBigmacBuilder() {
         System.out.println("Test BigmacBuilder() method");
         //Given
-        final Bigmac bigmac = new Bigmac.BigmacBuilder()
-                .bunSesame(true)
-                .numberOfBurgers(3)
+        final Bigmac bigmac = new Bigmac.BigmacBuilder(true, 3)
                 .sauce(Sauce.THOUSAND_ISLANDS)
                 .ingredient(Ingredient.CHEESE)
                 .ingredient(Ingredient.ONION)
