@@ -1,0 +1,59 @@
+create table ISSUESLISTS 
+(
+	ID serial primary key,
+    NAME varchar(100) not null
+);
+
+create table ISSUES
+(
+	ID serial primary key,
+    ISSUESLIST_ID bigint unsigned not null,
+    SUMMARY varchar(100) not null,
+	DESCRIPTION varchar(2048),
+    USER_ID_ASSIGNEDTO bigint unsigned,
+    foreign key (ISSUESLIST_ID) references ISSUESLISTS(ID),
+    foreign key (USER_ID_ASSIGNEDTO) references USERS(ID)
+);
+
+insert into ISSUESLISTS(NAME) 
+values ("To do");
+insert into ISSUESLISTS(NAME) 
+values ("In Progress");
+insert into ISSUESLISTS(NAME) 
+values ("Done");
+
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (1, "To do 1", "aaa", 1);
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (1, "To do 2", "aaa", 2);
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION)
+values (1, "To do 3", "aaa");
+insert into ISSUES(ISSUESLIST_ID, SUMMARY)
+values (1, "To do 4");
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (1, "To do 5", "aaa", 1);
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (2, "In progress 1", "aaa", 1);
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (2, "In progress 2", "aaa", 2);
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (2, "In progress 3", "aaa", 5);
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION)
+values (2, "In progress 4", "aaa");
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (2, "In progress 5", "aaa", 1);
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (3, "Done 1", "aaa", 2);
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (3, "Done 2", "aaa", 3);
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (3, "Done 3", "aaa", 4);
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (3, "Done 4", "aaa", 5);
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values (3, "Done 5", "aaa", 6);
+
+
+select * from ISSUESLISTS;
+
+select * from ISSUES;
