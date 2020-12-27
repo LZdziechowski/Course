@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "TASKLIST")
+@Table(name = "TASKLISTS")
 public class TaskList {
 
     private int id;
@@ -24,15 +24,11 @@ public class TaskList {
     }
 
     @Id
-    @GeneratedValue
     @NotNull
+    @GeneratedValue
     @Column(name = "ID", unique = true)
     public int getId() {
         return id;
-    }
-
-    private void setId(int id) {
-        this.id = id;
     }
 
     @NotNull
@@ -41,22 +37,31 @@ public class TaskList {
         return listName;
     }
 
+    @Column(name = "DESCRIPTION")
+    public String getDescription() {
+        return description;
+    }
+
+    @OneToMany(
+            targetEntity = Task.class,
+            mappedBy = "taskList",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    private void setId(int id) {
+        this.id = id;
+    }
+
     private void setListName(String listName) {
         this.listName = listName;
     }
 
-    @Column(name = "DESCRIPTION")
-    private String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
+    private void setDescription(String description) {
         this.description = description;
-    }
-
-    @OneToMany(targetEntity = Task.class, mappedBy = "taskList", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    public List<Task> getTasks() {
-        return tasks;
     }
 
     private void setTasks(List<Task> tasks) {

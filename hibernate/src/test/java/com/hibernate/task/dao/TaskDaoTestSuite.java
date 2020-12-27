@@ -18,8 +18,6 @@ public class TaskDaoTestSuite {
     private static final String DESCRIPTION = "Test: Learn Hibernate";
     @Autowired
     private TaskDao taskDao;
-    @Autowired
-    private TaskListDao taskListDao;
 
     @Test
     void testTaskDaoSave(){
@@ -61,6 +59,6 @@ public class TaskDaoTestSuite {
         //Then
         assertNotEquals(0, id);
         //CleanUp
-        //taskDao.deleteById(id);
+        taskDao.deleteById(id);
     }
 }

@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @SpringBootTest
 public class TaskListDaoTestSuite {
 
-    private final String LISTNAME = "ToDO";
+    private static final String LIST_NAME = "ToDo";
     @Autowired
     private TaskListDao taskListDao;
 
@@ -26,7 +26,7 @@ public class TaskListDaoTestSuite {
         TaskFinancialDetails tfd2 = new TaskFinancialDetails(new BigDecimal(10), false);
         task.setTaskFinancialDetails(tfd);
         task2.setTaskFinancialDetails(tfd2);
-        TaskList taskList = new TaskList(LISTNAME, "ToDo tasks");
+        TaskList taskList = new TaskList(LIST_NAME, "ToDo tasks");
         taskList.getTasks().add(task);
         taskList.getTasks().add(task2);
         task.setTaskList(taskList);
@@ -37,7 +37,7 @@ public class TaskListDaoTestSuite {
         //Then
         Assertions.assertNotEquals(0, id);
         //CleanUp
-        //taskListDao.deleteById(id);
+        taskListDao.deleteById(id);
     }
 
 }

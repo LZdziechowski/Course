@@ -3,11 +3,12 @@ package com.hibernate.task;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+
 import java.util.Date;
 
 @Entity
 @Table(name = "TASKS")
-public class Task {
+public final class Task {
 
     private int id;
     private String description;
@@ -49,22 +50,6 @@ public class Task {
         return duration;
     }
 
-    private void setId(int id) {
-        this.id = id;
-    }
-
-    private void setDescription(String description) {
-        this.description = description;
-    }
-
-    private void setCreated(Date created) {
-        this.created = created;
-    }
-
-    private void setDuration(int duration) {
-        this.duration = duration;
-    }
-
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "TASKS_FINANCIALS_ID")
     public TaskFinancialDetails getTaskFinancialDetails() {
@@ -83,5 +68,21 @@ public class Task {
 
     public void setTaskList(TaskList taskList) {
         this.taskList = taskList;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 }
