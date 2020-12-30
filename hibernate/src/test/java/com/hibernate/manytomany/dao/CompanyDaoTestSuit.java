@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -17,13 +19,13 @@ public class CompanyDaoTestSuit {
     @Test
     void testSaveManyToMany() {
         //Given
-        Employee johnSmith = new Employee("John", "Smith");
-        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
-        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+        final Employee johnSmith = new Employee("John", "Smith");
+        final Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
+        final Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
 
-        Company softwareMachine = new Company("Software Machine");
-        Company dataMaesters = new Company("Data Maesters");
-        Company greyMatter = new Company("Grey Matter");
+        final Company softwareMachine = new Company("Software Machine");
+        final Company dataMaesters = new Company("Data Maesters");
+        final Company greyMatter = new Company("Grey Matter");
 
         softwareMachine.getEmployees().add(johnSmith);
         dataMaesters.getEmployees().add(stephanieClarckson);
@@ -39,11 +41,11 @@ public class CompanyDaoTestSuit {
 
         //When
         companyDao.save(softwareMachine);
-        int softwareMachineId = softwareMachine.getId();
+        final int softwareMachineId = softwareMachine.getId();
         companyDao.save(dataMaesters);
-        int dataMaestersId = dataMaesters.getId();
+        final int dataMaestersId = dataMaesters.getId();
         companyDao.save(greyMatter);
-        int greyMatterId = greyMatter.getId();
+        final int greyMatterId = greyMatter.getId();
 
         //Then
         assertNotEquals(0, softwareMachineId);
@@ -51,12 +53,35 @@ public class CompanyDaoTestSuit {
         assertNotEquals(0, greyMatterId);
 
         //CleanUp
-        /*try {
+        try {
             companyDao.deleteById(softwareMachineId);
             companyDao.deleteById(dataMaestersId);
             companyDao.deleteById(greyMatterId);
         } catch (Exception e) {
             //do nothing
-        }*/
+        }
+    }
+
+    @Test
+    void testNamedNativeQueryCompanies() {
+        System.out.println("Test NamedNativeQuery retrieveCompanyWithFirst3Char in Company class");
+        //Given
+        final Company softwareMachine = new Company("Software Machine");
+        companyDao.save(softwareMachine);
+        final Company dataMaesters = new Company("Data Maesters");
+        companyDao.save(dataMaesters);
+        final Company greyMatter = new Company("Grey Matter");
+        companyDao.save(greyMatter);
+        //When
+        final List<Company> resultList = companyDao.retrieveCompanyWithFirstChar("Sof");
+        //Then
+        assertNotEquals(0, resultList.size());
+        //CleanUp
+        final int softwareMachineId = softwareMachine.getId();
+        companyDao.deleteById(softwareMachineId);
+        final int dataMaestersId = dataMaesters.getId();
+        companyDao.deleteById(dataMaestersId);
+        final int greyMatterId = greyMatter.getId();
+        companyDao.deleteById(greyMatterId);
     }
 }
