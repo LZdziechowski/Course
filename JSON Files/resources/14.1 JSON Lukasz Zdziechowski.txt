@@ -1,0 +1,23 @@
+{
+	"carName":"530d",
+	"carBrand":"BMW",
+	"carSeats":[
+		"driversSeat":{
+			"material":"leather",
+			"colour":"black"
+			},
+		"passengerSeat":{
+			"material":"leather",
+			"colour":"black"
+			},
+		"leftRearSeat":{
+			"material":"leather",
+			"colour":"black"
+			},
+		"rightRearSeat":{
+			"material":"leather",
+			"colour":"black"
+			},
+		],
+	"engineCapacity":3000
+}
