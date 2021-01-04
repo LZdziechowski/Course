@@ -2,19 +2,23 @@
 	"carName":"530d",
 	"carBrand":"BMW",
 	"carSeats":[
-		"driversSeat":{
+		"seat":{
+		    "name":"driversSeat",
 			"material":"leather",
 			"colour":"black"
 			},
-		"passengerSeat":{
+		"seat":{
+		    "name":"passengerSeat",
 			"material":"leather",
 			"colour":"black"
 			},
-		"leftRearSeat":{
+		"seat":{
+		    "name":"leftRearSeat",
 			"material":"leather",
 			"colour":"black"
 			},
-		"rightRearSeat":{
+		"seat":{
+		    "name":"rightRearSeat",
 			"material":"leather",
 			"colour":"black"
 			},
