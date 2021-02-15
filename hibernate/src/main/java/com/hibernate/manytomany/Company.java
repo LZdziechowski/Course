@@ -1,20 +1,28 @@
 package com.hibernate.manytomany;
 
+import com.hibernate.manytomany.facade.ListType;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedNativeQuery(
-        name = "Company.retrieveCompanyWithFirstChar",
-        query = "SELECT * FROM COMPANIES WHERE SUBSTRING(NAME, 1, 3) = :CHARACTERS",
-        resultClass = Company.class
-)
+@NamedNativeQueries({
+        @NamedNativeQuery(
+                name = "Company.retrieveCompanyWithFirstChar",
+                query = "SELECT * FROM COMPANIES WHERE SUBSTRING(NAME, 1, 3) = :CHARACTERS",
+                resultClass = Company.class
+        ),
+        @NamedNativeQuery(
+                name = "Company.retrieveCompanyWithCharacters",
+                query = "SELECT * FROM companies WHERE companies.name LIKE CONCAT('%', :CHARACTERS, '%')",
+                resultClass = Company.class
+        )
+})
 
 @Entity
 @Table(name = "COMPANIES")
-public class Company {
+public class Company implements ListType {
 
     private int id;
     private String name;

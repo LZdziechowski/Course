@@ -1,6 +1,8 @@
 package com.hibernate.manytomany.dao;
 
 import com.hibernate.manytomany.Employee;
+import com.hibernate.manytomany.facade.SearchProcessingException;
+import com.hibernate.manytomany.facade.SearchingFacade;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,6 +16,8 @@ public class EmployeeDaoTestSuite {
 
     @Autowired
     private EmployeeDao employeeDao;
+    @Autowired
+    private SearchingFacade searchingFacade;
 
     @Test
     void testNamedQueryEmployee() {
@@ -36,5 +40,18 @@ public class EmployeeDaoTestSuite {
         employeeDao.deleteById(stephanieClarcksonId);
         final int lindaKovalskyId = lindaKovalsky.getId();
         employeeDao.deleteById(lindaKovalskyId);
+    }
+
+    @Test
+    void testSearchEmployeeWithName() throws SearchProcessingException {
+        System.out.println("Test Search Employee With Name");
+        //Given
+        int testEmloyee1Id = searchingFacade.addEmployeeToDbReturnId(new Employee("testFN1", "testLN1"));
+        int testEmloyee2Id = searchingFacade.addEmployeeToDbReturnId(new Employee("testFN2", "testLN2"));
+        int testEmloyee3Id = searchingFacade.addEmployeeToDbReturnId(new Employee("testFN3", "testLN3"));
+        //When & Then
+        searchingFacade.searchNameInEmployees("FN1");
+        //CleanUp
+        searchingFacade.cleanUpEmployeeById(testEmloyee1Id, testEmloyee2Id, testEmloyee3Id);
     }
 }

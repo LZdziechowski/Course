@@ -1,5 +1,6 @@
 package com.hibernate.manytomany;
 
+import com.hibernate.manytomany.facade.ListType;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -11,9 +12,16 @@ import java.util.List;
         query = "FROM Employee WHERE lastName = :LASTNAME"
 )
 
+@NamedNativeQuery(
+        name = "Employee.retrieveEmployeeWhoseNameIs",
+        query = "SELECT * FROM employees WHERE employees.firstname LIKE CONCAT('%', :NAME, '%') " +
+                "or employees.lastname LIKE CONCAT('%', :NAME, '%')",
+        resultClass = Employee.class
+)
+
 @Entity
 @Table(name = "EMPLOYEES")
-public class Employee {
+public class Employee implements ListType {
 
     private int id;
     private String firstName;

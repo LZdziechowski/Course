@@ -2,6 +2,8 @@ package com.hibernate.manytomany.dao;
 
 import com.hibernate.manytomany.Company;
 import com.hibernate.manytomany.Employee;
+import com.hibernate.manytomany.facade.SearchProcessingException;
+import com.hibernate.manytomany.facade.SearchingFacade;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,10 +13,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-public class CompanyDaoTestSuit {
+public class CompanyDaoTestSuite {
 
     @Autowired
     private CompanyDao companyDao;
+    @Autowired
+    private SearchingFacade searchingFacade;
 
     @Test
     void testSaveManyToMany() {
@@ -83,5 +87,19 @@ public class CompanyDaoTestSuit {
         companyDao.deleteById(dataMaestersId);
         final int greyMatterId = greyMatter.getId();
         companyDao.deleteById(greyMatterId);
+    }
+
+    @Test
+    void testSearchCompanyWithChar() throws SearchProcessingException {
+        System.out.println("Test Search Company With Characters");
+        //Given
+        int testCompany1Id = searchingFacade.addCompanyToDbReturnId(new Company("testCompany1"));
+        int testCompany2Id = searchingFacade.addCompanyToDbReturnId(new Company("testCompany2"));
+        int testCompany3Id = searchingFacade.addCompanyToDbReturnId(new Company("testCompany4"));
+        //When & Then
+        searchingFacade.searchCharInCompanies("any1");
+        //CleanUp
+        searchingFacade.cleanUpCompanyById(testCompany1Id, testCompany2Id, testCompany3Id);
+
     }
 }
