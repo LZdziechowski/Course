@@ -8,8 +8,7 @@ import java.util.List;
 
 @NamedNativeQuery(
         name = "Company.retrieveCompanyWithFirstChar",
-        query = "SELECT * FROM COMPANIES WHERE NAME LIKE ':CHARACTERS%'",
-               // "SUBSTRING (NAME, 1, 3) = :CHARACTERS",
+        query = "SELECT * FROM COMPANIES WHERE SUBSTRING(NAME, 1, 3) = :CHARACTERS",
         resultClass = Company.class
 )
 
