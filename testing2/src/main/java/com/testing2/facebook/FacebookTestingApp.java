@@ -9,12 +9,12 @@ import org.openqa.selenium.support.ui.Select;
 public class FacebookTestingApp {
 
     public static final String XPATH_COOKIE = "//div[@class=\"_9o-r\"]/button[contains(@class, \"_42ft _4jy0 _9o-t\")]";
-    public static final String XPATH_NEWACCOUNT = "//div[@class=\"_6ltg\"]/a[@role=\"button\"]";
-    public static final String XPATH_DAY = "//span[@class=\"_5k_4\"]/span/select[contains(@name, \"birthday_day\")]";
-    public static final String XPATH_MONTH = "//span[@class=\"_5k_4\"]/span/select[contains(@name, \"birthday_month\")]";
-    public static final String XPATH_YEAR = "//span[@class=\"_5k_4\"]/span/select[contains(@name, \"birthday_year\")]";
+    public static final String XPATH_NEW_ACCOUNT = "//div[@class=\"_6ltg\"]/a[@role=\"button\"]";
+    public static final String XPATH_DAY = "//span[@class=\"_5k_4\"]//select[contains(@name, \"birthday_day\")]";
+    public static final String XPATH_MONTH = "//span[@class=\"_5k_4\"]//select[contains(@name, \"birthday_month\")]";
+    public static final String XPATH_YEAR = "//span[@class=\"_5k_4\"]//select[contains(@name, \"birthday_year\")]";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         WebDriver driver = WebDriverConfig.getDriver(WebDriverConfig.FIREFOX);
         driver.get("https://www.facebook.com/");
@@ -24,15 +24,13 @@ public class FacebookTestingApp {
         WebElement acceptCookie = driver.findElement(By.xpath(XPATH_COOKIE));
         acceptCookie.click();
 
-        WebElement newAccount = driver.findElement(By.xpath(XPATH_NEWACCOUNT));
+        WebElement newAccount = driver.findElement(By.xpath(XPATH_NEW_ACCOUNT));
         newAccount.click();
 
-        while (!driver.findElement(By.xpath(XPATH_DAY)).isDisplayed());
+        Thread.sleep(4000);
 
         WebElement selectDay = driver.findElement(By.xpath(XPATH_DAY));
         Select selectDayOfBirth = new Select(selectDay);
-        //selectDayOfBirth.selectByIndex(5);
-        //selectDayOfBirth.selectByVisibleText("5");
         selectDayOfBirth.selectByValue("5");
 
         WebElement selectMonth = driver.findElement(By.xpath(XPATH_MONTH));
