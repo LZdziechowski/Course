@@ -18,5 +18,4 @@ public interface Supplier {
     int reserveProduct(Product product, int amount);
 
     Optional<BigDecimal> getPrice(Product product);
-
 }

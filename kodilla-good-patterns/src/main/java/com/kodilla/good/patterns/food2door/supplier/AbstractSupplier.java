@@ -12,8 +12,7 @@ import java.util.Optional;
 
 public abstract class AbstractSupplier implements Supplier{
 
-    private String name = "Abstract";
-
+    protected String name;
     protected final Map<Product, ProductDetails> products = new HashMap<>();
 
     public void addProduct(Product product, int amount, BigDecimal price) {
@@ -35,7 +34,12 @@ public abstract class AbstractSupplier implements Supplier{
 
     @Override
     public Optional<BigDecimal> getPrice(Product product) {
-        return Optional.ofNullable(products.get(product).getPrice());
+        return Optional.ofNullable(products.get(product))
+                .map(ProductDetails::getPrice);
+    }
+
+    public Map<Product, ProductDetails> getProducts() {
+        return products;
     }
 
     @Override

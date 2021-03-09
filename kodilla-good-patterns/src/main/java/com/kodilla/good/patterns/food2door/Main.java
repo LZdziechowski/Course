@@ -33,33 +33,25 @@ public class Main {
         glutenFreeShop.addProduct(bread, 40, new BigDecimal("1.20"));
         glutenFreeShop.addProduct(milk, 20, new BigDecimal("1.99"));
 
-        Shops shops = new Shops();
+        final Shops shops = new Shops();
         shops.addShop(healthyShop);
         shops.addShop(extraFoodShop);
         shops.addShop(glutenFreeShop);
 
-        OrderProcessor orderProcessor = new OrderProcessor(shops);
+        final OrderProcessor orderProcessor = new OrderProcessor(shops);
 
-        Order order1 = new Order();
-        Order order2 = new Order();
+        final Order order1 = new Order();
+        final Order order2 = new Order();
         order1.addItem(new OrderItem(bread, 10));
         order1.addItem(new OrderItem(milk, 5));
         order1.addItem(new OrderItem(egg, 20));
         order2.addItem(new OrderItem(milk, 100));
 
-        OrderSummary orderSummary1 = orderProcessor.order(order1);
-        OrderSummary orderSummary2 = orderProcessor.order(order2);
+        final Order order3 = new Order();
+        order3.addItem(new OrderItem(milk, 100));
+        OrderSummary orderSummary = orderProcessor.order(order3);
 
-        System.out.println(healthyShop);
-        System.out.println(extraFoodShop);
-        System.out.println(glutenFreeShop);
-        System.out.println(orderSummary1);
-        System.out.println(healthyShop);
-        System.out.println(extraFoodShop);
-        System.out.println(glutenFreeShop);
-        System.out.println(orderSummary2);
-        System.out.println(healthyShop);
-        System.out.println(extraFoodShop);
-        System.out.println(glutenFreeShop);
+        System.out.println(orderSummary);
+        System.out.println(glutenFreeShop.getProducts().get(milk));
     }
 }

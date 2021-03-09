@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 public class HealthyShop extends AbstractSupplier {
 
-    private final String name = this.getClass().getName();
+    private final String name = this.getClass().getSimpleName();
 
     @Override
     public OrderSummaryItem process(OrderItem orderItem) {
@@ -15,11 +15,14 @@ public class HealthyShop extends AbstractSupplier {
         if( reserved == 0) {
             return null;
         }
+        final BigDecimal finalPrice = getPrice(orderItem.getProduct())
+                .map(p -> p.multiply(new BigDecimal(reserved)))
+                .orElse(BigDecimal.ZERO);
         return new OrderSummaryItem(
                 name,
                 orderItem.getProduct(),
                 reserved,
-                getPrice(orderItem.getProduct()).get().multiply(new BigDecimal(reserved))
+                finalPrice
         );
     }
 }

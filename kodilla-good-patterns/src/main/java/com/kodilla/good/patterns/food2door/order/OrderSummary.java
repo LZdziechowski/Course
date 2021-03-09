@@ -1,11 +1,12 @@
 package com.kodilla.good.patterns.food2door.order;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class OrderSummary {
 
-    private Set<OrderSummaryItem> orderSummaryItems = new HashSet<>();
+    private Set<OrderSummaryItem> orderSummaryItems = new LinkedHashSet<>();
 
     public void addItem(OrderSummaryItem orderSummaryItem) {
         orderSummaryItems.add(orderSummaryItem);

@@ -18,7 +18,6 @@ public class Order {
         }
         return false;
     }
-
     public Set<OrderItem> getOrderItems() {
         return orderItems;
     }

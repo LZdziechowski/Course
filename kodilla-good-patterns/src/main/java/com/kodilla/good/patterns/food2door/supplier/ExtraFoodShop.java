@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 public class ExtraFoodShop extends AbstractSupplier {
 
-    private final String name = this.getClass().getName();
+    private final String name = this.getClass().getSimpleName();
 
     @Override
     public OrderSummaryItem process(OrderItem orderItem) {

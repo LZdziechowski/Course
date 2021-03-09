@@ -19,6 +19,10 @@ public class OrderSummaryItem {
         this.finalPrice = finalPrice;
     }
 
+    public int getRealizedAmount() {
+        return realizedAmount;
+    }
+
     @Override
     public String toString() {
         return "OrderSummaryItem{" +
