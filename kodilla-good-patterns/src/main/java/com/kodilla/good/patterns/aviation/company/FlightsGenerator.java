@@ -12,9 +12,9 @@ public class FlightsGenerator {
         while (counter <= numberOfAirports) {
             Set<String> listTo = new HashSet<>();
             String from = "Airport" + counter;
-            int randomNumberToFly = random.nextInt(numberOfAirports + 1);
+            int randomNumberToFly = random.nextInt(numberOfAirports) + 1;
                 for (int i = 1; i <= randomNumberToFly; i++){
-                    int airportNumber = random.nextInt(numberOfAirports + 1);
+                    int airportNumber = random.nextInt(numberOfAirports) + 1;
                     listTo.add("Airport" + airportNumber);
                 }
             flights.put(from, listTo);

@@ -15,7 +15,6 @@ public class FlightValidator {
         checkedAirports.add(from);
         System.out.println("checking: " + from + "->" + to);
         if (flights.get(from).contains(to)) {
-            checkedAirports.clear();
             return true;
         } else if (!flights.get(from).isEmpty()){
             Set<String> airports = flights.get(from);
@@ -27,7 +26,6 @@ public class FlightValidator {
                 }
             }
         }
-        checkedAirports.clear();
         return false;
     }
 
