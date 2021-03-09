@@ -5,15 +5,10 @@ public class Main {
 
     public static void main(String[] args) {
 
-        FlightsList.addFlight(new Flight("Warsaw", "London"));
-        FlightsList.addFlight(new Flight("Warsaw", "Paris"));
-        FlightsList.addFlight(new Flight("Warsaw", "Dubai"));
-        FlightsList.addFlight(new Flight("Dubai", "Warsaw"));
-        FlightsList.addFlight(new Flight("Cracow", "Paris"));
-        FlightsList.addFlight(new Flight("London", "Cracow"));
+        FlightsGenerator flightsGenerator = new FlightsGenerator();
+        FlightValidator flightValidator = new FlightValidator(flightsGenerator.flightsGenerator(50));
+        System.out.println(flightValidator.getFlights());
+        System.out.println(flightValidator.validateFlyFromTo("Airport3", "Airport5"));
 
-        final FlightSearch flightSearch = new FlightSearch("Warsaw", null, null, 1);
-
-        flightSearch.search();
     }
 }
